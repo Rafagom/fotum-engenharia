@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "vercel-dev-helper": "vite --port $PORT",
+    "vdev": "vercel dev --local-config ./vercel-dev.json"
   },
   "dependencies": {
     "phosphor-react": "^1.4.1",

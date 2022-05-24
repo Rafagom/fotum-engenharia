@@ -10,6 +10,13 @@ import {
 } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+const path = require("path");
+const express = require("express");
+const { json } = require("express/lib/response");
+const app = express();
+
+app.use(require("cors")());
+app.use(express.json());
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -70,6 +77,15 @@ export function ContactForm() {
       console.log("axios aqui foi ");
       // console.log(JSON.stringify(response.data, null, 2));
     });
+
+    require("./mailService.js")(
+      "email",
+      "username",
+      "message",
+      "cost",
+      "subject",
+      null
+    );
   }
 
   const formik = useFormik({

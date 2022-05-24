@@ -56,20 +56,20 @@ const TextInputLiveFeedback = ({ label, helpText, ...props }: any) => {
 };
 
 export function ContactForm() {
+  let axiosConfig = {
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+      "Access-Control-Allow-Origin": "*",
+    },
+  };
+
   function send(campos: any) {
     const formData = new FormData();
     Object.keys(campos).forEach((key) => formData.append(key, campos[key]));
-    axios
-      .post("/send", formData, {
-        headers: {
-          "Content-Type":
-            "multipart/form-data; boundary=---------------------------97476729985249",
-        },
-      })
-      .then((response) => {
-        console.log("axios aqui foi ");
-        // console.log(JSON.stringify(response.data, null, 2));
-      });
+    axios.post("/send", formData, axiosConfig).then((response) => {
+      console.log("axios aqui foi ");
+      // console.log(JSON.stringify(response.data, null, 2));
+    });
   }
 
   const formik = useFormik({

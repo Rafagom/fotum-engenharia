@@ -18,7 +18,14 @@ app.post("/send", upload.single("anexo"), (req, res, next) => {
   const anexo = req.file;
   // console.log({ username, email, subject, cost, message, anexo });
 
-  require("./mailService.js")(email, username, message, cost, subject, anexo)
+  require("./api/mailService.js")(
+    email,
+    username,
+    message,
+    cost,
+    subject,
+    anexo
+  )
     .then((response) => res.json(response))
     .catch((error) => res.status(500).json(error));
 });

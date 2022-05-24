@@ -67,7 +67,7 @@ export function ContactForm() {
         },
       })
       .then((response) => {
-        console.log(response.data);
+        console.log("axios aqui foi ");
         // console.log(JSON.stringify(response.data, null, 2));
       });
   }

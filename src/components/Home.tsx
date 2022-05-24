@@ -1,13 +1,14 @@
 import { Advantages } from "./Advantages";
-import { Form } from "./Form";
-import { Welcome } from "./Welcome2";
+import { ContactForm } from "./Form";
+
+import { Welcome } from "./Welcome";
 
 export function Home() {
   return (
     <>
       <Welcome />
       <Advantages />
-      <Form />
+      <ContactForm />
     </>
   );
 }

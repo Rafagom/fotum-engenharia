@@ -90,7 +90,11 @@ export function ContactForm() {
     const formData = new FormData();
     Object.keys(campos).forEach((key) => formData.append(key, campos[key]));
     console.log(formData);
-    axios.post("/api/mandador", formData, axiosConfig).catch((err) => {
+    fetch("/api/mandador", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: formData,
+    }).catch((err) => {
       console.log(err);
     });
   }

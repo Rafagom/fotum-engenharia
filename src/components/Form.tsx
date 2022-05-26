@@ -10,6 +10,8 @@ import {
 } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+// import fetch from "node-fetch";
+import handler from "../../api/mandador";
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -87,16 +89,19 @@ export function ContactForm() {
   // };
 
   async function send(campos: any) {
-    const formData = new FormData();
-    Object.keys(campos).forEach((key) => formData.append(key, campos[key]));
-    console.log(JSON.stringify(campos));
-    fetch("/api/mandador", {
+    // const formData = new FormData();
+    // Object.keys(campos).forEach((key) => formData.append(key, campos[key]));
+    // console.log(JSON.stringify(campos));
+    const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: formData,
-    }).catch((err) => {
-      console.log(err);
-    });
+      body: JSON.stringify(campos),
+    };
+    fetch("https://fotum-engenharia.vercel.app/api/mandador", options)
+      .then(() => console.log("foi"))
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   const formik = useFormik({

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import {
   useFormik,
@@ -10,13 +10,6 @@ import {
 } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-const path = require("path");
-const express = require("express");
-const { json } = require("express/lib/response");
-const app = express();
-
-app.use(require("cors")());
-app.use(express.json());
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
@@ -63,29 +56,40 @@ const TextInputLiveFeedback = ({ label, helpText, ...props }: any) => {
 };
 
 export function ContactForm() {
+  // async function send(values: any) {
+  //   // console.log(typeof values.username);
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ username: values.username }),
+  //   };
+  //   const response = await fetch("/api/server2", requestOptions);
+  //   const data = await response.json();
+
+  // const res = await fetch("/api/server2", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({
+  //     email: values.email,
+  //     username: values.username,
+  //     message: values.message,
+  //     cost: values.const,
+  //     subject: values.subject,
+  //     anexo: values.anexo,
+  //   }),
+  //   mode: "cors",
+  // });
+
   let axiosConfig = {
-    headers: {
-      "Content-Type": "application/json;charset=UTF-8",
-      "Access-Control-Allow-Origin": "*",
-    },
+    headers: { "Content-Type": "application/json" },
   };
 
-  function send(campos: any) {
+  async function send(campos: any) {
     const formData = new FormData();
     Object.keys(campos).forEach((key) => formData.append(key, campos[key]));
-    axios.post("/send", formData, axiosConfig).then((response) => {
-      console.log("axios aqui foi ");
-      // console.log(JSON.stringify(response.data, null, 2));
-    });
-
-    require("./mailService.js")(
-      "email",
-      "username",
-      "message",
-      "cost",
-      "subject",
-      null
-    );
+    axios.post("fotum-serveless.vercel.app/api/server2", formData, axiosConfig);
   }
 
   const formik = useFormik({
@@ -102,6 +106,7 @@ export function ContactForm() {
       // alert(JSON.stringify(values, null, 2));
       // campos = { values };
       // handleFormSubmit(values);
+      console.log(values);
       send(values);
     },
     validationSchema: Yup.object({

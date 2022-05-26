@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "node server.js",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -20,6 +19,7 @@
     "express": "^4.18.1",
     "formik": "^2.2.9",
     "html2canvas": "^1.4.1",
+    "mongodb": "^4.6.0",
     "multer": "^1.4.4",
     "nodemailer": "^6.7.5",
     "phosphor-react": "^1.4.1",
@@ -31,9 +31,10 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/mongodb": "^4.0.7",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "@vercel/node": "^1.11.0",
+    "@vercel/node": "^1.15.3",
     "@vitejs/plugin-react": "^1.3.0",
     "autoprefixer": "^10.4.7",
     "esbuild": "^0.13.4",

@@ -28,3 +28,5 @@ dist-ssr
 #old version folders
 oldsendgrid.env
 sendgrid.env
+.env
+.vercel

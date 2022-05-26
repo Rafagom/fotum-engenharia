@@ -82,14 +82,14 @@ export function ContactForm() {
   //   mode: "cors",
   // });
 
-  let axiosConfig = {
-    headers: { "Content-Type": "application/json" },
-  };
+  // let axiosConfig = {
+  //   headers: { "Content-Type": "application/json" },
+  // };
 
   async function send(campos: any) {
     const formData = new FormData();
     Object.keys(campos).forEach((key) => formData.append(key, campos[key]));
-    console.log(formData);
+    console.log(JSON.stringify(campos));
     fetch("/api/mandador", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -113,7 +113,7 @@ export function ContactForm() {
       // alert(JSON.stringify(values, null, 2));
       // campos = { values };
       // handleFormSubmit(values);
-      console.log(values);
+      // console.log(values);
       send(values);
     },
     validationSchema: Yup.object({

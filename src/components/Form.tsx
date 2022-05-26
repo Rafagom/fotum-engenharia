@@ -91,7 +91,7 @@ export function ContactForm() {
     Object.keys(campos).forEach((key) => formData.append(key, campos[key]));
     axios
       .post(
-        "https://fotum-engenharia.vercel.app/api/server2",
+        "https://fotum-engenharia.vercel.app/api/mandador",
         formData,
         axiosConfig
       )

@@ -89,7 +89,11 @@ export function ContactForm() {
   async function send(campos: any) {
     const formData = new FormData();
     Object.keys(campos).forEach((key) => formData.append(key, campos[key]));
-    axios.post("fotum-serveless.vercel.app/api/server2", formData, axiosConfig);
+    axios.post(
+      "https://fotum-engenharia.vercel.app/api/server2",
+      formData,
+      axiosConfig
+    );
   }
 
   const formik = useFormik({
